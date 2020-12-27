@@ -1,0 +1,62 @@
+#!/#!bin/bash
+
+case $i in
+
+mon) touch temp1 temp2
+	;;
+tue) mv temp1 temp_1
+	;;
+wed) cp temp_1 temp_13
+	;;
+thur) ln -s soft_2 temp_2
+	;;
+fri) rm temp_13
+	;;
+sat|sun)  echo "today is holiday"
+	;;
+*) acho "The value enterd is wrong "
+	;;
+esac
+
+=======================================================================================
+
+
+2) /home/ec2-user/checkname.sh
+   ;;
+3) echo "enter a file you want to find"
+   read file
+   find /home/ec2-user -iname "$file" > location
+   if [ $? -eq 0 ];then
+   echo "$file is found in below locations"
+   cat location
+   else
+   echo "$file is not found"
+   fi
+   ;;
+4) echo "enter actual file name"
+  read file
+  if [ !-f $file ];then 
+   echo "$file does not exist. please check file and correct file"
+   exit 1
+  fi
+  echo "enter softlink name"
+  read link
+  if [ -L $link ];then
+   echo "$link already exists. Enter different link name"
+   exit 1
+  fi
+ln -s $file $link
+ ;;
+5) echo "enter file you want to edit"
+   read file
+   if [ -f $file ];then
+   vim $file
+   else
+   echo "$file does not exist"
+  fi
+;;
+*) echo "enter right option to perform operations"
+  exit 0
+  ;;
+esac  
+========================

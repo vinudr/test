@@ -1,0 +1,18 @@
+from devops7676 devops7676 to everyone:    8:53 AM
+What kind of script you have written
+I have written a script to monitor tomcat services (we have around 15 to 20 services). 
+If any service is stopped accidently by someone or it get stopped somehow. we should get an email
+notification saying that service is stopped and please take appropriate action
+=========================================================================================================
+#!/#!bin/bash
+service="serv1 serv2 ....serv20"
+for i in $services
+do
+   ps -ef | grep "$i"
+   if [ $? -ne 0 ];then
+      echo "$i" >> stopped_service
+   fi
+done
+cat stopped_service | mail -s "stopped services" -c "abc@gmail.com" xyz@gmail.com
+rm stopped_service
+=======================================================================================n

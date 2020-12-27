@@ -1,0 +1,13 @@
+#!/bin/bash
+
+n=$*
+string=$1
+
+if [n -ne 0] then;
+	for i in n
+	do
+	echo "string[n]" 
+	n=n-1
+	done
+fi
+			
